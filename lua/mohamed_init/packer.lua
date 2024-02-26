@@ -6,7 +6,7 @@ if not status then
   return
 end
 -- Trying copilot
---
+
 
 packer.startup(function(use)
   use("wbthomason/packer.nvim")
@@ -17,6 +17,7 @@ packer.startup(function(use)
   use 'feline-nvim/feline.nvim'
   use 'tpope/vim-commentary'
   use 'ryanoasis/vim-devicons'
+  use { "ellisonleao/gruvbox.nvim" }
   use 'folke/tokyonight.nvim'
   use 'windwp/nvim-autopairs'
   use 'akinsho/toggleterm.nvim'
@@ -68,8 +69,37 @@ packer.startup(function(use)
   use "https://github.com/tpope/vim-fugitive"
   use({
       "aserowy/tmux.nvim",
-      config = function() return require("tmux").setup() end
+      config =  require("tmux").setup(
+{
+    copy_sync = {
+        enable = true,
+
+        ignore_buffers = { empty = false },
+
+        redirect_to_clipboard = false,
+        register_offset = 0,
+
+        sync_clipboard = false,
+        sync_registers = true,
+        sync_deletes = true,
+        sync_unnamed = true,
+    },
+    navigation = {
+        cycle_navigation = false,
+
+        enable_default_keybindings = true,
+
+        persist_zoom = false,
+    },
+    resize = {
+        enable_default_keybindings = false,
+        resize_step_x = 1,
+        resize_step_y = 1,
+    }
+}
+          ) 
   })
+
   if packer_bootstrap then
     packer.sync()
   end

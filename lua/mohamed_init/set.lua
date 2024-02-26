@@ -17,7 +17,21 @@ opt.scrolloff=8
 vim.g.mapleader = " "
 vim.cmd("let NERDTreeShowLineNumbers = 1")
 
+function _G.custom_fold_text()
 
+    local line = vim.fn.getline(vim.v.foldstart)
+    
+    local line_count = vim.v.foldend - vim.v.foldstart + 1
+    
+    return "⚡ ".. line ..": " .. line_count .. " lines"
+
+end
+
+vim.opt.foldtext = 'v:lua.custom_fold_text()'
+
+vim.opt.fillchars = { eob = "-", fold = " " }
+
+vim.opt.viewoptions:remove("options")
 
 o.number = true
 o.numberwidth = 5
@@ -49,7 +63,8 @@ o.jumpoptions = 'view'
 vim.cmd("set ma")
 vim.cmd("let nerdtreeshowlinenumbers=1")
 
-vim.cmd("colorscheme nightfox")
+vim.cmd([[colorscheme nightfox]])
+
 
 vim.opt.termguicolors = true
 
