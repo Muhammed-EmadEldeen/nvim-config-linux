@@ -28,10 +28,7 @@ packer.startup(function(use)
   use 'mbbill/undotree'
   use { 'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons' }
   use 'dart-lang/dart-vim-plugin'
-  -- use {
-  --     'nvim-lualine/lualine.nvim',
-  --     requires = { 'nvim-tree/nvim-web-devicons', opt = true }
-  -- }
+  use 'xiyaowong/transparent.nvim'
   use({ 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' })
   use { 'akinsho/flutter-tools.nvim', requires = 'nvim-lua/plenary.nvim' }
   use {
